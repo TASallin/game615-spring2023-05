@@ -5,7 +5,7 @@ using TMPro;
 
 public class MoneyCollector : MonoBehaviour
 {
-    int number;
+    public int number;
     public TextMeshProUGUI display;
     //public AudioSource sfx;
 
