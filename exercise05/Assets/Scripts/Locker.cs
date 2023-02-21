@@ -5,6 +5,7 @@ using UnityEngine;
 public class Locker : MonoBehaviour
 {
     public PlayerStun stun;
+    public AudioSource voice;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +20,11 @@ public class Locker : MonoBehaviour
 
     private void OnTriggerEnter(Collider col) {
         if (col.gameObject.CompareTag("Player")) {
-            stun.StunPlayer(1);
+            stun.StunPlayer(2);
             Destroy(gameObject);
+            if (voice != null) {
+                voice.Play();
+            }
         }
     }
 }

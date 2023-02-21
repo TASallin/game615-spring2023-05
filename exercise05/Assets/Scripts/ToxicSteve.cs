@@ -10,6 +10,9 @@ public class ToxicSteve : MonoBehaviour
     public Vector3 target;
     public float speed;
     bool walking;
+    public AudioSource goodMusic;
+    public AudioSource funnyMusic;
+    public AudioSource weskuh;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +22,11 @@ public class ToxicSteve : MonoBehaviour
         walking = true;
     }
 
+    void OnEnable() {
+        goodMusic.Stop();
+        funnyMusic.Play();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -26,6 +34,7 @@ public class ToxicSteve : MonoBehaviour
             stunTimer -= Time.deltaTime;
             if (stunTimer <= 0) {
                 player.Rotate(new Vector3(0, 180, 0));
+                weskuh.Play();
             }
         }
         if (blindTimer >= 0) {

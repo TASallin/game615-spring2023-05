@@ -12,6 +12,8 @@ public class MothCutscene : MonoBehaviour {
     public Transform player;
     float boxTimer;
     float steveTimer;
+    public AudioSource buy;
+    public AudioSource moth;
 
     // Start is called before the first frame update
     void Start() {
@@ -31,6 +33,7 @@ public class MothCutscene : MonoBehaviour {
             boxTimer -= Time.deltaTime;
             if (boxTimer <= 0) {
                 steveTimer = 2f;
+                moth.Play();
                 pizzaBox.SetActive(true);
             }
         }
@@ -42,6 +45,7 @@ public class MothCutscene : MonoBehaviour {
             player.position = playerPosition;
             player.rotation = Quaternion.Euler(playerRotation);
             boxTimer = 4f;
+            buy.Play();
         }
     }
 }

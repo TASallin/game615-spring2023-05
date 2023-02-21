@@ -7,12 +7,17 @@ public class MoneyCollector : MonoBehaviour
 {
     public int number;
     public TextMeshProUGUI display;
+    public AudioSource voice2;
+    public AudioSource voice5;
+    public AudioSource voice7;
+    public AudioSource voice0;
     //public AudioSource sfx;
 
     // Start is called before the first frame update
     void Start()
     {
         number = 0;
+        voice0.Play();
     }
 
     // Update is called once per frame
@@ -26,6 +31,13 @@ public class MoneyCollector : MonoBehaviour
             //other.gameObject.SetActive(false);
             Destroy(other.gameObject);
             number += 1;
+            if (number == 2) {
+                voice2.Play();
+            } else if (number == 5) {
+                voice5.Play();
+            } else if (number == 7) {
+                voice7.Play();
+            }
             //sfx.Play();
         }
     }
