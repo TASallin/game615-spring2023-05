@@ -6,6 +6,10 @@ public class Locker : MonoBehaviour
 {
     public PlayerStun stun;
     public AudioSource voice;
+    public Uroburos uroburos;
+    public GameObject flashbang;
+    public bool explode;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +25,19 @@ public class Locker : MonoBehaviour
     private void OnTriggerEnter(Collider col) {
         if (col.gameObject.CompareTag("Player")) {
             stun.StunPlayer(2);
-            Destroy(gameObject);
+            uroburos.gameObject.SetActive(true);
+            Destroy(gameObject, 1);
+            GetComponent<Collider>().enabled = false;
             if (voice != null) {
                 voice.Play();
             }
+            
+        }
+    }
+
+    void OnDestroy() {
+        if (explode) {
+            flashbang.SetActive(true);
         }
     }
 }

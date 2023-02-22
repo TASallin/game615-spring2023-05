@@ -13,6 +13,10 @@ public class ToxicSteve : MonoBehaviour
     public AudioSource goodMusic;
     public AudioSource funnyMusic;
     public AudioSource weskuh;
+    public AudioSource boop;
+    public GameObject flashbang;
+    public GameObject survivor;
+    public GameObject firstBox;
 
     // Start is called before the first frame update
     void Start()
@@ -35,11 +39,15 @@ public class ToxicSteve : MonoBehaviour
             if (stunTimer <= 0) {
                 player.Rotate(new Vector3(0, 180, 0));
                 weskuh.Play();
+                boop.Play();
             }
         }
         if (blindTimer >= 0) {
             blindTimer -= Time.deltaTime;
             if (blindTimer <= 0) {
+                flashbang.SetActive(true);
+                firstBox.SetActive(true);
+                survivor.SetActive(true);
                 Destroy(gameObject);
             }
         }

@@ -27,14 +27,16 @@ public class MothCutscene : MonoBehaviour {
             steveTimer -= Time.deltaTime;
             if (steveTimer <= 0) {
                 steve.SetActive(true);
+                Destroy(gameObject);
             }
         }
         if (boxTimer > 0) {
             boxTimer -= Time.deltaTime;
             if (boxTimer <= 0) {
-                steveTimer = 2f;
+                steveTimer = 1f;
                 moth.Play();
                 pizzaBox.SetActive(true);
+                money.number = 0;
             }
         }
     }
@@ -44,7 +46,7 @@ public class MothCutscene : MonoBehaviour {
             stun.StunPlayer(10);
             player.position = playerPosition;
             player.rotation = Quaternion.Euler(playerRotation);
-            boxTimer = 4f;
+            boxTimer = 5f;
             buy.Play();
         }
     }

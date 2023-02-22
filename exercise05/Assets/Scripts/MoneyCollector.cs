@@ -11,13 +11,15 @@ public class MoneyCollector : MonoBehaviour
     public AudioSource voice5;
     public AudioSource voice7;
     public AudioSource voice0;
+    public GameObject particles;
+    public Vector3 particleOffset;
     //public AudioSource sfx;
 
     // Start is called before the first frame update
     void Start()
     {
         number = 0;
-        voice0.Play();
+        //voice0.Play();
     }
 
     // Update is called once per frame
@@ -29,6 +31,8 @@ public class MoneyCollector : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Collectible")) {
             //other.gameObject.SetActive(false);
+            GameObject part = Instantiate(particles, other.transform.position + particleOffset, Quaternion.identity);
+            Destroy(part, 2);
             Destroy(other.gameObject);
             number += 1;
             if (number == 2) {

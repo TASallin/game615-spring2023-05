@@ -6,6 +6,7 @@ public class SteveTrigger : MonoBehaviour
 {
     public Vector3 target;
     public SurvivorSteve steve;
+    public AudioSource sfx;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,10 @@ public class SteveTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")) {
             steve.targetPosition = target;
+            Destroy(gameObject);
+            if (sfx != null) {
+                sfx.Play();
+            }
         }
     }
 }
